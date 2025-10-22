@@ -1,0 +1,109 @@
+Traceback (most recent call last):
+  File "/Users/joeduprey/miniconda3/envs/rca-qaqc-reports/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/joeduprey/miniconda3/envs/rca-qaqc-reports/lib/python3.11/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joeduprey/miniconda3/envs/rca-qaqc-reports/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joeduprey/miniconda3/envs/rca-qaqc-reports/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/joeduprey/miniconda3/envs/rca-qaqc-reports/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/joeduprey/miniconda3/envs/rca-qaqc-reports/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/joeduprey/miniconda3/envs/rca-qaqc-reports/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+res_dict = {}
+for stream in stream_list:
+    before, after = stream_summary(stream)
+    res_dict[stream] = (before, after)
+------------------
+
+----- stdout -----
+loading CE02SHBP-LJ01D-09-PCO2WB103-streamed-pco2w_b_sami_data_record
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mValueError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[7][39m[32m, line 3[39m
+[32m      1[39m res_dict = {}
+[32m      2[39m [38;5;28;01mfor[39;00m stream [38;5;129;01min[39;00m stream_list:
+[32m----> [39m[32m3[39m     before, after = [43mstream_summary[49m[43m([49m[43mstream[49m[43m)[49m
+[32m      4[39m     res_dict[stream] = (before, after)
+
+[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 3[39m, in [36mstream_summary[39m[34m(stream_name)[39m
+[32m      1[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mstream_summary[39m(stream_name):
+[32m      2[39m     [38;5;28mprint[39m([33mf[39m[33m"[39m[33mloading [39m[38;5;132;01m{[39;00mstream_name[38;5;132;01m}[39;00m[33m"[39m)
+[32m----> [39m[32m3[39m     before = [43mload_data[49m[43m([49m[43mstream_name[49m[43m,[49m[43m [49m[43mbefore_bucket[49m[43m)[49m
+[32m      4[39m     after = load_data(stream_name, after_bucket)
+[32m      6[39m     plt.figure(figsize=([32m40[39m, [32m8[39m))
+
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 4[39m, in [36mload_data[39m[34m(stream_name, bucket)[39m
+[32m      2[39m zarr_dir = bucket + stream_name
+[32m      3[39m zarr_store = fs.get_mapper(zarr_dir)
+[32m----> [39m[32m4[39m ds = [43mxr[49m[43m.[49m[43mopen_zarr[49m[43m([49m[43mzarr_store[49m[43m,[49m[43m [49m[43mconsolidated[49m[43m=[49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m
+[32m      5[39m [38;5;28;01mreturn[39;00m ds[[[33m"[39m[33mpco2_seawater[39m[33m"[39m, [33m"[39m[33mpco2w_thermistor_temperature[39m[33m"[39m]]
+
+[36mFile [39m[32m~/miniconda3/envs/rca-qaqc-reports/lib/python3.11/site-packages/xarray/backends/zarr.py:1586[39m, in [36mopen_zarr[39m[34m(store, group, synchronizer, chunks, decode_cf, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, consolidated, overwrite_encoded_chunks, chunk_store, storage_options, decode_timedelta, use_cftime, zarr_version, zarr_format, use_zarr_fill_value_as_mask, chunked_array_type, from_array_kwargs, create_default_indexes, **kwargs)[39m
+[32m   1572[39m     [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m(
+[32m   1573[39m         [33m"[39m[33mopen_zarr() got unexpected keyword arguments [39m[33m"[39m + [33m"[39m[33m,[39m[33m"[39m.join(kwargs.keys())
+[32m   1574[39m     )
+[32m   1576[39m backend_kwargs = {
+[32m   1577[39m     [33m"[39m[33msynchronizer[39m[33m"[39m: synchronizer,
+[32m   1578[39m     [33m"[39m[33mconsolidated[39m[33m"[39m: consolidated,
+[32m   (...)[39m[32m   1583[39m     [33m"[39m[33mzarr_format[39m[33m"[39m: zarr_format,
+[32m   1584[39m }
+[32m-> [39m[32m1586[39m ds = [43mopen_dataset[49m[43m([49m
+[32m   1587[39m [43m    [49m[43mfilename_or_obj[49m[43m=[49m[43mstore[49m[43m,[49m
+[32m   1588[39m [43m    [49m[43mgroup[49m[43m=[49m[43mgroup[49m[43m,[49m
+[32m   1589[39m [43m    [49m[43mdecode_cf[49m[43m=[49m[43mdecode_cf[49m[43m,[49m
+[32m   1590[39m [43m    [49m[43mmask_and_scale[49m[43m=[49m[43mmask_and_scale[49m[43m,[49m
+[32m   1591[39m [43m    [49m[43mdecode_times[49m[43m=[49m[43mdecode_times[49m[43m,[49m
+[32m   1592[39m [43m    [49m[43mconcat_characters[49m[43m=[49m[43mconcat_characters[49m[43m,[49m
+[32m   1593[39m [43m    [49m[43mdecode_coords[49m[43m=[49m[43mdecode_coords[49m[43m,[49m
+[32m   1594[39m [43m    [49m[43mengine[49m[43m=[49m[33;43m"[39;49m[33;43mzarr[39;49m[33;43m"[39;49m[43m,[49m
+[32m   1595[39m [43m    [49m[43mchunks[49m[43m=[49m[43mchunks[49m[43m,[49m
+[32m   1596[39m [43m    [49m[43mdrop_variables[49m[43m=[49m[43mdrop_variables[49m[43m,[49m
+[32m   1597[39m [43m    [49m[43mcreate_default_indexes[49m[43m=[49m[43mcreate_default_indexes[49m[43m,[49m
+[32m   1598[39m [43m    [49m[43mchunked_array_type[49m[43m=[49m[43mchunked_array_type[49m[43m,[49m
+[32m   1599[39m [43m    [49m[43mfrom_array_kwargs[49m[43m=[49m[43mfrom_array_kwargs[49m[43m,[49m
+[32m   1600[39m [43m    [49m[43mbackend_kwargs[49m[43m=[49m[43mbackend_kwargs[49m[43m,[49m
+[32m   1601[39m [43m    [49m[43mdecode_timedelta[49m[43m=[49m[43mdecode_timedelta[49m[43m,[49m
+[32m   1602[39m [43m    [49m[43muse_cftime[49m[43m=[49m[43muse_cftime[49m[43m,[49m
+[32m   1603[39m [43m    [49m[43mzarr_version[49m[43m=[49m[43mzarr_version[49m[43m,[49m
+[32m   1604[39m [43m    [49m[43muse_zarr_fill_value_as_mask[49m[43m=[49m[43muse_zarr_fill_value_as_mask[49m[43m,[49m
+[32m   1605[39m [43m[49m[43m)[49m
+[32m   1606[39m [38;5;28;01mreturn[39;00m ds
+
+[36mFile [39m[32m~/miniconda3/envs/rca-qaqc-reports/lib/python3.11/site-packages/xarray/backends/api.py:582[39m, in [36mopen_dataset[39m[34m(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, create_default_indexes, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)[39m
+[32m    579[39m [38;5;28;01mif[39;00m from_array_kwargs [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[32m    580[39m     from_array_kwargs = {}
+[32m--> [39m[32m582[39m backend = [43mplugins[49m[43m.[49m[43mget_backend[49m[43m([49m[43mengine[49m[43m)[49m
+[32m    584[39m decoders = _resolve_decoders_kwargs(
+[32m    585[39m     decode_cf,
+[32m    586[39m     open_backend_dataset_parameters=backend.open_dataset_parameters,
+[32m   (...)[39m[32m    592[39m     decode_coords=decode_coords,
+[32m    593[39m )
+[32m    595[39m overwrite_encoded_chunks = kwargs.pop([33m"[39m[33moverwrite_encoded_chunks[39m[33m"[39m, [38;5;28;01mNone[39;00m)
+
+[36mFile [39m[32m~/miniconda3/envs/rca-qaqc-reports/lib/python3.11/site-packages/xarray/backends/plugins.py:220[39m, in [36mget_backend[39m[34m(engine)[39m
+[32m    218[39m     engines = list_engines()
+[32m    219[39m     [38;5;28;01mif[39;00m engine [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m engines:
+[32m--> [39m[32m220[39m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[32m    221[39m             [33mf[39m[33m"[39m[33munrecognized engine [39m[33m'[39m[38;5;132;01m{[39;00mengine[38;5;132;01m}[39;00m[33m'[39m[33m must be one of your download engines: [39m[38;5;132;01m{[39;00m[38;5;28mlist[39m(engines)[38;5;132;01m}[39;00m[33m. [39m[33m"[39m
+[32m    222[39m             [33m"[39m[33mTo install additional dependencies, see:[39m[38;5;130;01m\n[39;00m[33m"[39m
+[32m    223[39m             [33m"[39m[33mhttps://docs.xarray.dev/en/stable/user-guide/io.html [39m[38;5;130;01m\n[39;00m[33m"[39m
+[32m    224[39m             [33m"[39m[33mhttps://docs.xarray.dev/en/stable/getting-started-guide/installing.html[39m[33m"[39m
+[32m    225[39m         )
+[32m    226[39m     backend = engines[engine]
+[32m    227[39m [38;5;28;01melif[39;00m [38;5;28missubclass[39m(engine, BackendEntrypoint):
+
+[31mValueError[39m: unrecognized engine 'zarr' must be one of your download engines: ['store']. To install additional dependencies, see:
+https://docs.xarray.dev/en/stable/user-guide/io.html 
+https://docs.xarray.dev/en/stable/getting-started-guide/installing.html
+
