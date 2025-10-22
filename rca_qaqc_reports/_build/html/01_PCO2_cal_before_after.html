@@ -524,86 +524,45 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading CE02SHBP-LJ01D-09-PCO2WB103-streamed-pco2w_b_sami_data_record
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">res_dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">stream</span> <span class="ow">in</span> <span class="n">stream_list</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">before</span><span class="p">,</span> <span class="n">after</span> <span class="o">=</span> <span class="n">stream_summary</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">res_dict</span><span class="p">[</span><span class="n">stream</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">before</span><span class="p">,</span> <span class="n">after</span><span class="p">)</span>
-
-<span class="nn">Cell In[6], line 3,</span> in <span class="ni">stream_summary</span><span class="nt">(stream_name)</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span><span class="w"> </span><span class="nf">stream_summary</span><span class="p">(</span><span class="n">stream_name</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;loading </span><span class="si">{</span><span class="n">stream_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">before</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">stream_name</span><span class="p">,</span> <span class="n">before_bucket</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">after</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">stream_name</span><span class="p">,</span> <span class="n">after_bucket</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-
-<span class="nn">Cell In[3], line 4,</span> in <span class="ni">load_data</span><span class="nt">(stream_name, bucket)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">zarr_dir</span> <span class="o">=</span> <span class="n">bucket</span> <span class="o">+</span> <span class="n">stream_name</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">zarr_store</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">get_mapper</span><span class="p">(</span><span class="n">zarr_dir</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="n">zarr_store</span><span class="p">,</span> <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">return</span> <span class="n">ds</span><span class="p">[[</span><span class="s2">&quot;pco2_seawater&quot;</span><span class="p">,</span> <span class="s2">&quot;pco2w_thermistor_temperature&quot;</span><span class="p">]]</span>
-
-<span class="nn">File ~/miniconda3/envs/rca-qaqc-reports/lib/python3.11/site-packages/xarray/backends/zarr.py:1586,</span> in <span class="ni">open_zarr</span><span class="nt">(store, group, synchronizer, chunks, decode_cf, mask_and_scale, decode_times, concat_characters, decode_coords, drop_variables, consolidated, overwrite_encoded_chunks, chunk_store, storage_options, decode_timedelta, use_cftime, zarr_version, zarr_format, use_zarr_fill_value_as_mask, chunked_array_type, from_array_kwargs, create_default_indexes, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1572</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1573</span>         <span class="s2">&quot;open_zarr() got unexpected keyword arguments &quot;</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="g g-Whitespace">   </span><span class="mi">1574</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1576</span> <span class="n">backend_kwargs</span> <span class="o">=</span> <span class="p">{</span>
-<span class="g g-Whitespace">   </span><span class="mi">1577</span>     <span class="s2">&quot;synchronizer&quot;</span><span class="p">:</span> <span class="n">synchronizer</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1578</span>     <span class="s2">&quot;consolidated&quot;</span><span class="p">:</span> <span class="n">consolidated</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>   <span class="mi">1583</span>     <span class="s2">&quot;zarr_format&quot;</span><span class="p">:</span> <span class="n">zarr_format</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1584</span> <span class="p">}</span>
-<span class="ne">-&gt; </span><span class="mi">1586</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">open_dataset</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1587</span>     <span class="n">filename_or_obj</span><span class="o">=</span><span class="n">store</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1588</span>     <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1589</span>     <span class="n">decode_cf</span><span class="o">=</span><span class="n">decode_cf</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1590</span>     <span class="n">mask_and_scale</span><span class="o">=</span><span class="n">mask_and_scale</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1591</span>     <span class="n">decode_times</span><span class="o">=</span><span class="n">decode_times</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1592</span>     <span class="n">concat_characters</span><span class="o">=</span><span class="n">concat_characters</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1593</span>     <span class="n">decode_coords</span><span class="o">=</span><span class="n">decode_coords</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1594</span>     <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;zarr&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1595</span>     <span class="n">chunks</span><span class="o">=</span><span class="n">chunks</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1596</span>     <span class="n">drop_variables</span><span class="o">=</span><span class="n">drop_variables</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1597</span>     <span class="n">create_default_indexes</span><span class="o">=</span><span class="n">create_default_indexes</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1598</span>     <span class="n">chunked_array_type</span><span class="o">=</span><span class="n">chunked_array_type</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1599</span>     <span class="n">from_array_kwargs</span><span class="o">=</span><span class="n">from_array_kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1600</span>     <span class="n">backend_kwargs</span><span class="o">=</span><span class="n">backend_kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1601</span>     <span class="n">decode_timedelta</span><span class="o">=</span><span class="n">decode_timedelta</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1602</span>     <span class="n">use_cftime</span><span class="o">=</span><span class="n">use_cftime</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1603</span>     <span class="n">zarr_version</span><span class="o">=</span><span class="n">zarr_version</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1604</span>     <span class="n">use_zarr_fill_value_as_mask</span><span class="o">=</span><span class="n">use_zarr_fill_value_as_mask</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1605</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1606</span> <span class="k">return</span> <span class="n">ds</span>
-
-<span class="nn">File ~/miniconda3/envs/rca-qaqc-reports/lib/python3.11/site-packages/xarray/backends/api.py:582,</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, create_default_indexes, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">579</span> <span class="k">if</span> <span class="n">from_array_kwargs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">580</span>     <span class="n">from_array_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="ne">--&gt; </span><span class="mi">582</span> <span class="n">backend</span> <span class="o">=</span> <span class="n">plugins</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">584</span> <span class="n">decoders</span> <span class="o">=</span> <span class="n">_resolve_decoders_kwargs</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span>     <span class="n">decode_cf</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">586</span>     <span class="n">open_backend_dataset_parameters</span><span class="o">=</span><span class="n">backend</span><span class="o">.</span><span class="n">open_dataset_parameters</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">592</span>     <span class="n">decode_coords</span><span class="o">=</span><span class="n">decode_coords</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">593</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">595</span> <span class="n">overwrite_encoded_chunks</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;overwrite_encoded_chunks&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-
-<span class="nn">File ~/miniconda3/envs/rca-qaqc-reports/lib/python3.11/site-packages/xarray/backends/plugins.py:220,</span> in <span class="ni">get_backend</span><span class="nt">(engine)</span>
-<span class="g g-Whitespace">    </span><span class="mi">218</span>     <span class="n">engines</span> <span class="o">=</span> <span class="n">list_engines</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">219</span>     <span class="k">if</span> <span class="n">engine</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">engines</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">220</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">221</span>             <span class="sa">f</span><span class="s2">&quot;unrecognized engine &#39;</span><span class="si">{</span><span class="n">engine</span><span class="si">}</span><span class="s2">&#39; must be one of your download engines: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">engines</span><span class="p">)</span><span class="si">}</span><span class="s2">. &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">222</span>             <span class="s2">&quot;To install additional dependencies, see:</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">223</span>             <span class="s2">&quot;https://docs.xarray.dev/en/stable/user-guide/io.html </span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">224</span>             <span class="s2">&quot;https://docs.xarray.dev/en/stable/getting-started-guide/installing.html&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">226</span>     <span class="n">backend</span> <span class="o">=</span> <span class="n">engines</span><span class="p">[</span><span class="n">engine</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">227</span> <span class="k">elif</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">BackendEntrypoint</span><span class="p">):</span>
-
-<span class="ne">ValueError</span>: unrecognized engine &#39;zarr&#39; must be one of your download engines: [&#39;store&#39;]. To install additional dependencies, see:
-<span class="ne">https</span>://docs.xarray.dev/en/stable/user-guide/io.html 
-<span class="ne">https</span>://docs.xarray.dev/en/stable/getting-started-guide/installing.html
+<img alt="_images/d4f7419507c7c91ff4c87109760898d3f11e16bf87b9208b96d64959e9877233.png" src="_images/d4f7419507c7c91ff4c87109760898d3f11e16bf87b9208b96d64959e9877233.png" />
+<img alt="_images/6774411f17eb22b6e0f05672fdb3cab09f65ce10f0f8eb8da7beaa405746ef3e.png" src="_images/6774411f17eb22b6e0f05672fdb3cab09f65ce10f0f8eb8da7beaa405746ef3e.png" />
+<img alt="_images/412e08d47856d17fb14d1227b62e588a3b567689eeaedabb4c12afc2eea469ed.png" src="_images/412e08d47856d17fb14d1227b62e588a3b567689eeaedabb4c12afc2eea469ed.png" />
+<img alt="_images/78bd70866bc2ec8184049368063e6933459a8246a31d672bfa55efed9f4dddc1.png" src="_images/78bd70866bc2ec8184049368063e6933459a8246a31d672bfa55efed9f4dddc1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading CE04OSBP-LJ01C-09-PCO2WB104-streamed-pco2w_b_sami_data_record
 </pre></div>
 </div>
+<img alt="_images/a84b30ccec52230eaa065bc9a124aee33d0af5225aa627e488501dbbb3d93baf.png" src="_images/a84b30ccec52230eaa065bc9a124aee33d0af5225aa627e488501dbbb3d93baf.png" />
+<img alt="_images/ee1c4de628083ab6318b7e0081e08b1062ea59784c289b3038586b7712ab090a.png" src="_images/ee1c4de628083ab6318b7e0081e08b1062ea59784c289b3038586b7712ab090a.png" />
+<img alt="_images/eee04674a6e84a71399f6504dbaf7c42ed59606720088e1d9dd9ecd057a56bc8.png" src="_images/eee04674a6e84a71399f6504dbaf7c42ed59606720088e1d9dd9ecd057a56bc8.png" />
+<img alt="_images/98f2731a6fbc3355a2ed2883500c794c13f62a8cd61745c2a1e54e51d338b3b8.png" src="_images/98f2731a6fbc3355a2ed2883500c794c13f62a8cd61745c2a1e54e51d338b3b8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading CE04OSPS-PC01B-4D-PCO2WA105-streamed-pco2w_a_sami_data_record
+</pre></div>
+</div>
+<img alt="_images/cf3ad701d7249a82f884c178adb274a3c88eb3bf8c0fa03e1065845370da17b3.png" src="_images/cf3ad701d7249a82f884c178adb274a3c88eb3bf8c0fa03e1065845370da17b3.png" />
+<img alt="_images/2ccf4c5559d5b751d58769f8d59bab99bc1c3385bb93ff2b72deaac261954bc2.png" src="_images/2ccf4c5559d5b751d58769f8d59bab99bc1c3385bb93ff2b72deaac261954bc2.png" />
+<img alt="_images/48d5c76b2fd5cf22a508e8f1776ddf835b228f5efe30e245853cfdaf1776eb2a.png" src="_images/48d5c76b2fd5cf22a508e8f1776ddf835b228f5efe30e245853cfdaf1776eb2a.png" />
+<img alt="_images/592938f8d290edd7547e777794cfe40073270571dce3a353b0f38204586447af.png" src="_images/592938f8d290edd7547e777794cfe40073270571dce3a353b0f38204586447af.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading CE04OSPS-SF01B-4F-PCO2WA102-streamed-pco2w_a_sami_data_record
+</pre></div>
+</div>
+<img alt="_images/b20b0848e5b87a42c8de7ac2859a474d93474d1fa2237099abcc79646100ea78.png" src="_images/b20b0848e5b87a42c8de7ac2859a474d93474d1fa2237099abcc79646100ea78.png" />
+<img alt="_images/66dc138dff3e3f2daa56448304b976bbbe5b1f9d1a86b9f2b7934ec468f71ef1.png" src="_images/66dc138dff3e3f2daa56448304b976bbbe5b1f9d1a86b9f2b7934ec468f71ef1.png" />
+<img alt="_images/8110f9feb7016c0009626c7e5584e25d2cc88c3f831b133db903324e57583bb6.png" src="_images/8110f9feb7016c0009626c7e5584e25d2cc88c3f831b133db903324e57583bb6.png" />
+<img alt="_images/967cdfba9ac30da85e4bbf49efeef5471db02840c5778980417f93122e8c7318.png" src="_images/967cdfba9ac30da85e4bbf49efeef5471db02840c5778980417f93122e8c7318.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading RS01SBPS-SF01A-4F-PCO2WA101-streamed-pco2w_a_sami_data_record
+</pre></div>
+</div>
+<img alt="_images/be10572df0188f07ed4d966a44dd51cbec86b3aee46d38739ce2f388270a2f96.png" src="_images/be10572df0188f07ed4d966a44dd51cbec86b3aee46d38739ce2f388270a2f96.png" />
+<img alt="_images/4a986e6b1c7ee2dd595806ec792e130b239518bbda833ae216cfc0e64227497a.png" src="_images/4a986e6b1c7ee2dd595806ec792e130b239518bbda833ae216cfc0e64227497a.png" />
+<img alt="_images/b37b6a0e4194821bf0825594b81eeb76b361a6e8146d514ce0c17c0f118075e4.png" src="_images/b37b6a0e4194821bf0825594b81eeb76b361a6e8146d514ce0c17c0f118075e4.png" />
+<img alt="_images/add0d9ac8d742aed62f28d64375d2e561190c573cd439c7150d5ec7e1ef8f9d7.png" src="_images/add0d9ac8d742aed62f28d64375d2e561190c573cd439c7150d5ec7e1ef8f9d7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading RS03AXPS-SF03A-4F-PCO2WA301-streamed-pco2w_a_sami_data_record
+</pre></div>
+</div>
+<img alt="_images/e2630c7e936f1b24a5483140908846cc8d9d6adb7b77ed8d8c1e81bc511b4973.png" src="_images/e2630c7e936f1b24a5483140908846cc8d9d6adb7b77ed8d8c1e81bc511b4973.png" />
+<img alt="_images/a33bc1fa46c371f926e20ec692b24db2e011ece72ced98ff36a3d8d13c9717a4.png" src="_images/a33bc1fa46c371f926e20ec692b24db2e011ece72ced98ff36a3d8d13c9717a4.png" />
+<img alt="_images/cd70c8e9cb518566c40207ba4137eafde8405d03a2012dcbd59f3acbd4359d04.png" src="_images/cd70c8e9cb518566c40207ba4137eafde8405d03a2012dcbd59f3acbd4359d04.png" />
+<img alt="_images/403e808b8603539f31daa5cb8075424cb05599523bc08c52d2540841232d239e.png" src="_images/403e808b8603539f31daa5cb8075424cb05599523bc08c52d2540841232d239e.png" />
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="individual-profiles">
