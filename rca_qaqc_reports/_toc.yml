@@ -4,10 +4,10 @@
 format: jb-book
 root: intro
 chapters:
-  - file: markdown
-  - file: notebooks
-  - file: markdown-notebooks
-  - title: PCO2
-    sections:
-      - file: 01_PCO2_cal_before_after
-      - title: PCO₂ Calibration Correction Report
+- file: markdown
+- file: notebooks
+- file: markdown-notebooks
+- title: PCO2
+  sections:
+    - file: 01_PCO2_cal_before_after
+    - title: PCO₂ Calibration Correction Report
