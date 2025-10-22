@@ -9,7 +9,7 @@ parts:
     - file: markdown
     - file: notebooks
     - file: markdown-notebooks
-  - caption: PCO2 Reports
+  - caption: PCO₂ Reports
     chapters:
     - file: 01_PCO2_cal_before_after
-      title: PCO2 Calibration Correction Report
+      title: PCO₂ Calibration Correction Report
