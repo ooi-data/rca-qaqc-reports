@@ -3,11 +3,13 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
-- title: PCO2
-  sections:
+parts:
+  - caption: Jupyter Book Docs
+    chapters:
+    - file: markdown
+    - file: notebooks
+    - file: markdown-notebooks
+  - caption: PCO2 Reports
+    chapters:
     - file: 01_PCO2_cal_before_after
       title: PCO2 Calibration Correction Report
