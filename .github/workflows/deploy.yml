@@ -15,10 +15,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: 3.11
-      - name: Install dependencies
+      - name: install dependencies
         run: |
           pip install -r requirements.txt
-      - name: Build book
+      - name: clean old build 
+        run: jupyter-book clean ./rca_qaqc_reports
+      - name: build book
         run: jupyter-book build ./rca_qaqc_reports
       - name: Deploy to GitHub Pages
         run: |
