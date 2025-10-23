@@ -1,0 +1,1140 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2025 PCO2 calibration correction analysis &#8212; RCA QAQC Reports</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'PCO2/01_PCO2_cal_before_after';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="CAM DS test" href="../CAMDS/camds.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ocean-logo-fullcolor.png" class="logo__image only-light" alt="RCA QAQC Reports - Home"/>
+    <script>document.write(`<img src="../_static/ocean-logo-fullcolor.png" class="logo__image only-dark" alt="RCA QAQC Reports - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    RCA QAQC Reports
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Book Docs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Digital Still Camera</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CAMDS/camds.html">CAMDS test</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PCO₂</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2025 PCO2 calibration correction analysis</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ooi-data/rca-qaqc-reports" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ooi-data/rca-qaqc-reports/issues/new?title=Issue%20on%20page%20%2FPCO2/01_PCO2_cal_before_after.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/PCO2/01_PCO2_cal_before_after.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2025 PCO2 calibration correction analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2025 PCO2 calibration correction analysis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-difference-in-representative-science-pod-profiles">Calibration difference in representative science pod profiles</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="pco2-calibration-correction-analysis">
+<h1>2025 PCO2 calibration correction analysis<a class="headerlink" href="#pco2-calibration-correction-analysis" title="Link to this heading">#</a></h1>
+<p>Sunburst Sensors recently informed OOI that they have corrected an error in their processing code that produces temperature-dependent data errors when deployment and calibration temperatures are significantly different. This notebook analyses the relative impact of this calibration change so that end-users can gauge impact
+on research products.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">s3fs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.dates</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mdates</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">after_bucket</span> <span class="o">=</span> <span class="s2">&quot;ooi-data/&quot;</span>
+<span class="n">before_bucket</span> <span class="o">=</span> <span class="s2">&quot;ooi-data-vault/&quot;</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="n">s3fs</span><span class="o">.</span><span class="n">S3FileSystem</span><span class="p">(</span><span class="n">anon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">load_data</span><span class="p">(</span><span class="n">stream_name</span><span class="p">,</span> <span class="n">bucket</span><span class="p">):</span>
+    <span class="n">zarr_dir</span> <span class="o">=</span> <span class="n">bucket</span> <span class="o">+</span> <span class="n">stream_name</span>
+    <span class="n">zarr_store</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">get_mapper</span><span class="p">(</span><span class="n">zarr_dir</span><span class="p">)</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="n">zarr_store</span><span class="p">,</span> <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ds</span><span class="p">[[</span><span class="s2">&quot;pco2_seawater&quot;</span><span class="p">,</span> <span class="s2">&quot;pco2w_thermistor_temperature&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stream_list</span> <span class="o">=</span> <span class="p">[</span> 
+    <span class="s2">&quot;CE02SHBP-LJ01D-09-PCO2WB103-streamed-pco2w_b_sami_data_record&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CE04OSBP-LJ01C-09-PCO2WB104-streamed-pco2w_b_sami_data_record&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CE04OSPS-PC01B-4D-PCO2WA105-streamed-pco2w_a_sami_data_record&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CE04OSPS-SF01B-4F-PCO2WA102-streamed-pco2w_a_sami_data_record&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;RS01SBPS-SF01A-4F-PCO2WA101-streamed-pco2w_a_sami_data_record&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;RS03AXPS-SF03A-4F-PCO2WA301-streamed-pco2w_a_sami_data_record&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ticks</span><span class="p">(</span><span class="n">plt</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">MonthLocator</span><span class="p">())</span>           <span class="c1"># tick every month</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%b %Y&#39;</span><span class="p">))</span> <span class="c1"># e.g., &quot;Jan 2024&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>  <span class="c1"># rotate for readability</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="c1"># --- Add faint vertical lines at each month ---</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">stream_summary</span><span class="p">(</span><span class="n">stream_name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;loading </span><span class="si">{</span><span class="n">stream_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">before</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">stream_name</span><span class="p">,</span> <span class="n">before_bucket</span><span class="p">)</span>
+    <span class="n">after</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">stream_name</span><span class="p">,</span> <span class="n">after_bucket</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4000</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;before and after correction&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">before</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">][</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">before</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;before correction&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">after</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">][</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">after</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;after correction&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">markerscale</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span> 
+    <span class="n">ticks</span><span class="p">(</span><span class="n">plt</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">before</span><span class="p">[</span><span class="s1">&#39;pco2w_thermistor_temperature&#39;</span><span class="p">]</span>
+    <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;temperature reading&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4000</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">before</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">][</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">before</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">))</span>
+    <span class="n">ticks</span><span class="p">(</span><span class="n">plt</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+    <span class="n">common_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intersect1d</span><span class="p">(</span><span class="n">before</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">after</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+    <span class="n">before_sub</span> <span class="o">=</span> <span class="n">before</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">common_times</span><span class="p">)</span>
+    <span class="n">after_sub</span> <span class="o">=</span> <span class="n">after</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">common_times</span><span class="p">)</span>
+
+    <span class="n">years</span> <span class="o">=</span> <span class="n">before_sub</span><span class="p">[</span><span class="s1">&#39;time.year&#39;</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">before_sub</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">],</span> <span class="n">after_sub</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">years</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">before_sub</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span><span class="si">}</span><span class="s2"> before correction&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">after_sub</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span><span class="si">}</span><span class="s2">after correction&quot;</span><span class="p">)</span>
+    <span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
+    <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">before_sub</span><span class="p">[</span><span class="s1">&#39;pco2w_thermistor_temperature&#39;</span><span class="p">]</span>
+
+    <span class="c1"># compute 5th and 95th percentiles (ignoring nans)</span>
+    <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">before_sub</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">],</span>
+        <span class="n">after_sub</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">],</span>
+        <span class="n">s</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">c</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span>
+        <span class="n">norm</span><span class="o">=</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">before_sub</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span><span class="si">}</span><span class="s2"> before correction&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">after_sub</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span><span class="si">}</span><span class="s2"> after correction&quot;</span><span class="p">)</span>
+    <span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
+    <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">before_sub</span><span class="p">,</span> <span class="n">after_sub</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">stream</span> <span class="ow">in</span> <span class="n">stream_list</span><span class="p">:</span>
+    <span class="n">before</span><span class="p">,</span> <span class="n">after</span> <span class="o">=</span> <span class="n">stream_summary</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+    <span class="n">res_dict</span><span class="p">[</span><span class="n">stream</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">before</span><span class="p">,</span> <span class="n">after</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading CE02SHBP-LJ01D-09-PCO2WB103-streamed-pco2w_b_sami_data_record
+</pre></div>
+</div>
+<img alt="../_images/c5a9414469ef549c156720812961ed499be485fd7e749b593cd0feb2a2168dd2.png" src="../_images/c5a9414469ef549c156720812961ed499be485fd7e749b593cd0feb2a2168dd2.png" />
+<img alt="../_images/6774411f17eb22b6e0f05672fdb3cab09f65ce10f0f8eb8da7beaa405746ef3e.png" src="../_images/6774411f17eb22b6e0f05672fdb3cab09f65ce10f0f8eb8da7beaa405746ef3e.png" />
+<img alt="../_images/412e08d47856d17fb14d1227b62e588a3b567689eeaedabb4c12afc2eea469ed.png" src="../_images/412e08d47856d17fb14d1227b62e588a3b567689eeaedabb4c12afc2eea469ed.png" />
+<img alt="../_images/78bd70866bc2ec8184049368063e6933459a8246a31d672bfa55efed9f4dddc1.png" src="../_images/78bd70866bc2ec8184049368063e6933459a8246a31d672bfa55efed9f4dddc1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading CE04OSBP-LJ01C-09-PCO2WB104-streamed-pco2w_b_sami_data_record
+</pre></div>
+</div>
+<img alt="../_images/c85e04dc62cf0ba43297a030e5260492c7652aecfa2ca0934ad4b8765384fe4a.png" src="../_images/c85e04dc62cf0ba43297a030e5260492c7652aecfa2ca0934ad4b8765384fe4a.png" />
+<img alt="../_images/ee1c4de628083ab6318b7e0081e08b1062ea59784c289b3038586b7712ab090a.png" src="../_images/ee1c4de628083ab6318b7e0081e08b1062ea59784c289b3038586b7712ab090a.png" />
+<img alt="../_images/eee04674a6e84a71399f6504dbaf7c42ed59606720088e1d9dd9ecd057a56bc8.png" src="../_images/eee04674a6e84a71399f6504dbaf7c42ed59606720088e1d9dd9ecd057a56bc8.png" />
+<img alt="../_images/98f2731a6fbc3355a2ed2883500c794c13f62a8cd61745c2a1e54e51d338b3b8.png" src="../_images/98f2731a6fbc3355a2ed2883500c794c13f62a8cd61745c2a1e54e51d338b3b8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading CE04OSPS-PC01B-4D-PCO2WA105-streamed-pco2w_a_sami_data_record
+</pre></div>
+</div>
+<img alt="../_images/85e8eb3a90caceb3bbb84443e8d1c1188cc59b89febbc2c5fd971c7eeb719848.png" src="../_images/85e8eb3a90caceb3bbb84443e8d1c1188cc59b89febbc2c5fd971c7eeb719848.png" />
+<img alt="../_images/2ccf4c5559d5b751d58769f8d59bab99bc1c3385bb93ff2b72deaac261954bc2.png" src="../_images/2ccf4c5559d5b751d58769f8d59bab99bc1c3385bb93ff2b72deaac261954bc2.png" />
+<img alt="../_images/48d5c76b2fd5cf22a508e8f1776ddf835b228f5efe30e245853cfdaf1776eb2a.png" src="../_images/48d5c76b2fd5cf22a508e8f1776ddf835b228f5efe30e245853cfdaf1776eb2a.png" />
+<img alt="../_images/592938f8d290edd7547e777794cfe40073270571dce3a353b0f38204586447af.png" src="../_images/592938f8d290edd7547e777794cfe40073270571dce3a353b0f38204586447af.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading CE04OSPS-SF01B-4F-PCO2WA102-streamed-pco2w_a_sami_data_record
+</pre></div>
+</div>
+<img alt="../_images/523c5120c72e2c93ae3d410bbff62c3dacda3c66e2c1299a0ec6b7e1a936f8e4.png" src="../_images/523c5120c72e2c93ae3d410bbff62c3dacda3c66e2c1299a0ec6b7e1a936f8e4.png" />
+<img alt="../_images/66dc138dff3e3f2daa56448304b976bbbe5b1f9d1a86b9f2b7934ec468f71ef1.png" src="../_images/66dc138dff3e3f2daa56448304b976bbbe5b1f9d1a86b9f2b7934ec468f71ef1.png" />
+<img alt="../_images/8110f9feb7016c0009626c7e5584e25d2cc88c3f831b133db903324e57583bb6.png" src="../_images/8110f9feb7016c0009626c7e5584e25d2cc88c3f831b133db903324e57583bb6.png" />
+<img alt="../_images/967cdfba9ac30da85e4bbf49efeef5471db02840c5778980417f93122e8c7318.png" src="../_images/967cdfba9ac30da85e4bbf49efeef5471db02840c5778980417f93122e8c7318.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading RS01SBPS-SF01A-4F-PCO2WA101-streamed-pco2w_a_sami_data_record
+</pre></div>
+</div>
+<img alt="../_images/ed68380042a69c6f63ba0789fcca6de26b176a6d46bf8db027db36a598f7c596.png" src="../_images/ed68380042a69c6f63ba0789fcca6de26b176a6d46bf8db027db36a598f7c596.png" />
+<img alt="../_images/4a986e6b1c7ee2dd595806ec792e130b239518bbda833ae216cfc0e64227497a.png" src="../_images/4a986e6b1c7ee2dd595806ec792e130b239518bbda833ae216cfc0e64227497a.png" />
+<img alt="../_images/b37b6a0e4194821bf0825594b81eeb76b361a6e8146d514ce0c17c0f118075e4.png" src="../_images/b37b6a0e4194821bf0825594b81eeb76b361a6e8146d514ce0c17c0f118075e4.png" />
+<img alt="../_images/add0d9ac8d742aed62f28d64375d2e561190c573cd439c7150d5ec7e1ef8f9d7.png" src="../_images/add0d9ac8d742aed62f28d64375d2e561190c573cd439c7150d5ec7e1ef8f9d7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loading RS03AXPS-SF03A-4F-PCO2WA301-streamed-pco2w_a_sami_data_record
+</pre></div>
+</div>
+<img alt="../_images/91984038f700783e8afb48ca11ad35c05f59cd4d789d2cc9078967f583da1a61.png" src="../_images/91984038f700783e8afb48ca11ad35c05f59cd4d789d2cc9078967f583da1a61.png" />
+<img alt="../_images/a33bc1fa46c371f926e20ec692b24db2e011ece72ced98ff36a3d8d13c9717a4.png" src="../_images/a33bc1fa46c371f926e20ec692b24db2e011ece72ced98ff36a3d8d13c9717a4.png" />
+<img alt="../_images/cd70c8e9cb518566c40207ba4137eafde8405d03a2012dcbd59f3acbd4359d04.png" src="../_images/cd70c8e9cb518566c40207ba4137eafde8405d03a2012dcbd59f3acbd4359d04.png" />
+<img alt="../_images/403e808b8603539f31daa5cb8075424cb05599523bc08c52d2540841232d239e.png" src="../_images/403e808b8603539f31daa5cb8075424cb05599523bc08c52d2540841232d239e.png" />
+</div>
+</div>
+</section>
+<section id="calibration-difference-in-representative-science-pod-profiles">
+<h1>Calibration difference in representative science pod profiles<a class="headerlink" href="#calibration-difference-in-representative-science-pod-profiles" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">load_regridding_inputs</span><span class="p">(</span><span class="n">refdes</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    
+    <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+    <span class="n">current_year</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">year</span>
+    <span class="k">if</span> <span class="n">append</span><span class="p">:</span>
+        <span class="n">years</span> <span class="o">=</span> <span class="n">current_year</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">years</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">START_YEAR</span><span class="p">,</span> <span class="n">current_year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    
+    <span class="n">site</span> <span class="o">=</span> <span class="n">refdes</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span>
+    <span class="n">stream_name</span> <span class="o">=</span> <span class="n">SITES_DICT</span><span class="p">[</span><span class="n">refdes</span><span class="p">][</span><span class="s1">&#39;zarrFile&#39;</span><span class="p">]</span>
+    
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;loading profile indices&quot;</span><span class="p">)</span>
+    <span class="n">profile_indices_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+        <span class="n">profile_indices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;https://raw.githubusercontent.com/OOI-CabledArray/profileIndices/refs/heads/main/</span><span class="si">{</span><span class="n">site</span><span class="si">}</span><span class="s2">_profiles_</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">.csv&quot;</span>
+        <span class="p">)</span>
+        <span class="n">profile_indices_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">profile_indices</span><span class="p">)</span>
+
+        <span class="n">all_indices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">profile_indices_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+    <span class="k">return</span> <span class="n">all_indices</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">START_YEAR</span> <span class="o">=</span> <span class="mi">2023</span>
+<span class="n">SITES_DICT</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/OOI-CabledArray/rca-data-tools/refs/heads/main/rca_data_tools/qaqc/params/sitesDictionary.csv&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;refDes&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s1">&#39;series&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">VARIABLE_MAP</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/OOI-CabledArray/rca-data-tools/refs/heads/main/rca_data_tools/qaqc/params/variableMap.csv&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;parameter&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s1">&#39;series&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">indices_301</span> <span class="o">=</span> <span class="n">load_regridding_inputs</span><span class="p">(</span><span class="s1">&#39;RS03AXPS-SF03A-4F-PCO2WA301&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">indices_101</span> <span class="o">=</span> <span class="n">load_regridding_inputs</span><span class="p">(</span><span class="s1">&#39;RS01SBPS-SF01A-4F-PCO2WA101&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">indices_102</span> <span class="o">=</span> <span class="n">load_regridding_inputs</span><span class="p">(</span><span class="s1">&#39;CE04OSPS-SF01B-4F-PCO2WA102&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">2025-10-23 13:12:22.059</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Cyan">__main__</span>:<span class=" -Color -Color-Cyan">load_regridding_inputs</span>:<span class=" -Color -Color-Cyan">13</span> - <span class=" -Color -Color-Bold">loading profile indices</span>
+<span class=" -Color -Color-Green">2025-10-23 13:12:22.694</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Cyan">__main__</span>:<span class=" -Color -Color-Cyan">load_regridding_inputs</span>:<span class=" -Color -Color-Cyan">13</span> - <span class=" -Color -Color-Bold">loading profile indices</span>
+<span class=" -Color -Color-Green">2025-10-23 13:12:23.392</span> | <span class=" -Color -Color-Bold">INFO    </span> | <span class=" -Color -Color-Cyan">__main__</span>:<span class=" -Color -Color-Cyan">load_regridding_inputs</span>:<span class=" -Color -Color-Cyan">13</span> - <span class=" -Color -Color-Bold">loading profile indices</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">indices_301</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>profile</th>
+      <th>start</th>
+      <th>peak</th>
+      <th>end</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16493</td>
+      <td>2023-08-28 17:44:00</td>
+      <td>2023-08-28 18:51:00</td>
+      <td>2023-08-28 19:28:00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>16494</td>
+      <td>2023-08-29 01:25:00</td>
+      <td>2023-08-29 03:41:00</td>
+      <td>2023-08-29 04:04:00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>16495</td>
+      <td>2023-08-29 05:10:00</td>
+      <td>2023-08-29 06:19:00</td>
+      <td>2023-08-29 06:54:00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16496</td>
+      <td>2023-08-29 07:41:00</td>
+      <td>2023-08-29 08:49:00</td>
+      <td>2023-08-29 10:24:00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>16497</td>
+      <td>2023-08-29 11:31:00</td>
+      <td>2023-08-29 12:37:00</td>
+      <td>2023-08-29 13:11:00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;RS01SBPS-SF01A-4F-PCO2WA101-streamed-pco2w_a_sami_data_record&quot;</span><span class="p">]</span> <span class="c1"># before is 0, after is 1 index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;xarray.Dataset&gt; Size: 2MB
+ Dimensions:                       (time: 65665)
+ Coordinates:
+   * time                          (time) datetime64[ns] 525kB 2014-10-07T01:0...
+ Data variables:
+     pco2_seawater                 (time) float64 525kB 2.043e+04 ... 1.607e+03
+     pco2w_thermistor_temperature  (time) float64 525kB 8.046 7.935 ... 7.537
+ Attributes: (12/62)
+     AssetManagementRecordLastModified:  2025-09-03T15:19:25.444000
+     AssetUniqueID:                      ATAPL-58336-00003
+     Conventions:                        CF-1.6
+     Description:                        pCO2 Water: PCO2W Series A
+     FirmwareVersion:                    Not specified.
+     Manufacturer:                       Sunburst Sensors
+     ...                                 ...
+     stream:                             pco2w_a_sami_data_record
+     subsite:                            RS01SBPS
+     summary:                            Dataset Generated by Stream Engine fr...
+     time_coverage_end:                  2025-09-08T15:18:12.036230144
+     time_coverage_start:                2014-10-07T01:05:10.333669376
+     title:                              Data produced by Stream Engine versio...,
+ &lt;xarray.Dataset&gt; Size: 2MB
+ Dimensions:                       (time: 65665)
+ Coordinates:
+   * time                          (time) datetime64[ns] 525kB 2014-10-07T01:0...
+ Data variables:
+     pco2_seawater                 (time) float64 525kB 1.883e+04 ... 1.513e+03
+     pco2w_thermistor_temperature  (time) float64 525kB ...
+ Attributes: (12/62)
+     AssetManagementRecordLastModified:  2025-10-21T14:59:51.689000
+     AssetUniqueID:                      ATAPL-58336-00003
+     Conventions:                        CF-1.6
+     Description:                        pCO2 Water: PCO2W Series A
+     FirmwareVersion:                    Not specified.
+     Manufacturer:                       Sunburst Sensors
+     ...                                 ...
+     stream:                             pco2w_a_sami_data_record
+     subsite:                            RS01SBPS
+     summary:                            Dataset Generated by Stream Engine fr...
+     time_coverage_end:                  2025-10-23T09:58:30.203421696
+     time_coverage_start:                2014-10-07T01:05:10.333669376
+     title:                              Data produced by Stream Engine versio...)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_profiles</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">ds_tuple</span><span class="p">,</span> <span class="n">tp</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">diff_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">indices</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">tp</span><span class="p">)</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    
+        <span class="n">before_downcast</span> <span class="o">=</span> <span class="n">ds_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;peak&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]))</span>
+        <span class="n">after_downcast</span> <span class="o">=</span> <span class="n">ds_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;peak&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]))</span>
+
+        
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">before_downcast</span><span class="o">.</span><span class="n">time</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">j</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">before_downcast</span> <span class="o">/</span> <span class="n">after_downcast</span>
+            <span class="n">diff_values</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">diff</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+            <span class="n">diff_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">diff_values</span><span class="p">)</span>
+
+            <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+                <span class="n">before_downcast</span><span class="p">[</span><span class="s1">&#39;pco2w_thermistor_temperature&#39;</span><span class="p">],</span>
+                <span class="n">before_downcast</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">],</span>
+                <span class="n">label</span><span class="o">=</span><span class="s1">&#39;before&#39;</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+                <span class="n">after_downcast</span><span class="p">[</span><span class="s1">&#39;pco2w_thermistor_temperature&#39;</span><span class="p">],</span>
+                <span class="n">after_downcast</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">],</span>
+                <span class="n">label</span><span class="o">=</span><span class="s1">&#39;after&#39;</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> 
+                <span class="p">)</span>
+    
+            <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> 
+            
+    
+            <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">before_downcast</span><span class="p">[</span><span class="s1">&#39;pco2_seawater&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">before_downcast</span><span class="p">[</span><span class="s1">&#39;pco2w_thermistor_temperature&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">j</span><span class="o">&lt;=</span><span class="mi">20</span><span class="p">:</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> 
+
+    <span class="k">return</span> <span class="n">diff_list</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_101</span> <span class="o">=</span> <span class="n">plot_profiles</span><span class="p">(</span><span class="n">indices_101</span><span class="p">,</span> <span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;RS01SBPS-SF01A-4F-PCO2WA101-streamed-pco2w_a_sami_data_record&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/627f3520c723591913cc7fa18fb9dc523eafaf7401ce1c4687d16b2f2bc72da5.png" src="../_images/627f3520c723591913cc7fa18fb9dc523eafaf7401ce1c4687d16b2f2bc72da5.png" />
+<img alt="../_images/532f250a33e45b78543a745f1cef2e39151c3c7cbb5342d2c888d950faf599e8.png" src="../_images/532f250a33e45b78543a745f1cef2e39151c3c7cbb5342d2c888d950faf599e8.png" />
+<img alt="../_images/9794e8e3fa3599cf65b17a40953c812d5fed49ca194bf633439d58dcd288e21f.png" src="../_images/9794e8e3fa3599cf65b17a40953c812d5fed49ca194bf633439d58dcd288e21f.png" />
+<img alt="../_images/b98fa35a2725a91cee8a94fa8557ea97454a0b0693fce321acebb93944b93d14.png" src="../_images/b98fa35a2725a91cee8a94fa8557ea97454a0b0693fce321acebb93944b93d14.png" />
+<img alt="../_images/4f2bd6aa8990962d8eb5b00678142126d55f06ded4f347b2bdda043908e5c7af.png" src="../_images/4f2bd6aa8990962d8eb5b00678142126d55f06ded4f347b2bdda043908e5c7af.png" />
+<img alt="../_images/e9d89cd935cc0242ea766bc36a6a721620d8fb34939f908996341e86c69bd183.png" src="../_images/e9d89cd935cc0242ea766bc36a6a721620d8fb34939f908996341e86c69bd183.png" />
+<img alt="../_images/b00cef8bca5570aa651c89cfe0739976a2bcb0ed4d4ce68c78d1284c446d552d.png" src="../_images/b00cef8bca5570aa651c89cfe0739976a2bcb0ed4d4ce68c78d1284c446d552d.png" />
+<img alt="../_images/0f1a66d759fdaaf19ac9caec18b04ab3993c92794c7ee240db3d35a943f3d1ec.png" src="../_images/0f1a66d759fdaaf19ac9caec18b04ab3993c92794c7ee240db3d35a943f3d1ec.png" />
+<img alt="../_images/4abcbb5ab9155dd5f5488004718d38c04e0c3bd195f244ac12b5638ec74699be.png" src="../_images/4abcbb5ab9155dd5f5488004718d38c04e0c3bd195f244ac12b5638ec74699be.png" />
+<img alt="../_images/a28b46a1ffd8a47d65c8a9b246cd3d7a020d846c7cda9172494418312979e868.png" src="../_images/a28b46a1ffd8a47d65c8a9b246cd3d7a020d846c7cda9172494418312979e868.png" />
+<img alt="../_images/a5c4c05eedf59a80b6947edb09f592b33145d754feb48d0872f855c987e8252f.png" src="../_images/a5c4c05eedf59a80b6947edb09f592b33145d754feb48d0872f855c987e8252f.png" />
+<img alt="../_images/9ad156ebcf73c7c077d3455a3703582d1c967e13cf80e55100ade417c7666d77.png" src="../_images/9ad156ebcf73c7c077d3455a3703582d1c967e13cf80e55100ade417c7666d77.png" />
+<img alt="../_images/d936e3a444c5e8e3728d01593ca6d25a0cae7c751da01ddeaa073e807fdd8bfe.png" src="../_images/d936e3a444c5e8e3728d01593ca6d25a0cae7c751da01ddeaa073e807fdd8bfe.png" />
+<img alt="../_images/ce11c2cccb0b1f77535fe7ff444ffd521ba0690908c12ce6f28ce048f2fc7290.png" src="../_images/ce11c2cccb0b1f77535fe7ff444ffd521ba0690908c12ce6f28ce048f2fc7290.png" />
+<img alt="../_images/a2e6c19ed677c337b89afad98229a78dfb834c02edd677532cacf419e37e26d0.png" src="../_images/a2e6c19ed677c337b89afad98229a78dfb834c02edd677532cacf419e37e26d0.png" />
+<img alt="../_images/589add0c6a1b7c685de4ad0a61c6cc417e7e2cff33f4283eb4de0e2cc8e238e2.png" src="../_images/589add0c6a1b7c685de4ad0a61c6cc417e7e2cff33f4283eb4de0e2cc8e238e2.png" />
+<img alt="../_images/662e8692a2dd061378ad64ac0ab804388196a7993ec57b0092ca5a09150373d8.png" src="../_images/662e8692a2dd061378ad64ac0ab804388196a7993ec57b0092ca5a09150373d8.png" />
+<img alt="../_images/7ebb5bd9c331a4df08018f6e09c7ed0af9f2456a0d52dec78347484f3c10368f.png" src="../_images/7ebb5bd9c331a4df08018f6e09c7ed0af9f2456a0d52dec78347484f3c10368f.png" />
+<img alt="../_images/f2a3b7229769248affaa53869ac1815f9d668e85b98c535fa9f4dd3d33d3cca4.png" src="../_images/f2a3b7229769248affaa53869ac1815f9d668e85b98c535fa9f4dd3d33d3cca4.png" />
+<img alt="../_images/7263fe31abed7fd1b415cfc34f0b91cf9bac8c47a72d8fc892cccf6092954734.png" src="../_images/7263fe31abed7fd1b415cfc34f0b91cf9bac8c47a72d8fc892cccf6092954734.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_301</span> <span class="o">=</span> <span class="n">plot_profiles</span><span class="p">(</span><span class="n">indices_301</span><span class="p">,</span> <span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;RS03AXPS-SF03A-4F-PCO2WA301-streamed-pco2w_a_sami_data_record&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e515d0b82f630f82b6f6bda6289a76c1aeaab87e4224729f992e4c6e18e653ab.png" src="../_images/e515d0b82f630f82b6f6bda6289a76c1aeaab87e4224729f992e4c6e18e653ab.png" />
+<img alt="../_images/e5489d27d5e8db6527bf800d58d175a43ae06811ab201da7160a170a16bd85c0.png" src="../_images/e5489d27d5e8db6527bf800d58d175a43ae06811ab201da7160a170a16bd85c0.png" />
+<img alt="../_images/cac01580780eb00b17d9152f72764179cda13d49d9aa16eca0743f210fb684ad.png" src="../_images/cac01580780eb00b17d9152f72764179cda13d49d9aa16eca0743f210fb684ad.png" />
+<img alt="../_images/9735c716e1bf0282c7116a143d3e34cc31f43c4991a03286e1e723451fbc47bc.png" src="../_images/9735c716e1bf0282c7116a143d3e34cc31f43c4991a03286e1e723451fbc47bc.png" />
+<img alt="../_images/2864723f9a09962deadccdc92328da123574c49bd022b948d6763af191969865.png" src="../_images/2864723f9a09962deadccdc92328da123574c49bd022b948d6763af191969865.png" />
+<img alt="../_images/9d4974a8a36eb02aba3e84d463d035976438cc735f041e2cc27c48465460e4a3.png" src="../_images/9d4974a8a36eb02aba3e84d463d035976438cc735f041e2cc27c48465460e4a3.png" />
+<img alt="../_images/d9f32c60bbb2584345d4477a0731c45e6209a5319fcf22b438842213632a60e8.png" src="../_images/d9f32c60bbb2584345d4477a0731c45e6209a5319fcf22b438842213632a60e8.png" />
+<img alt="../_images/630cdcb2821bb8f248bfb0583c619075fedbe0271f2acb5dea8b431fc6fd117f.png" src="../_images/630cdcb2821bb8f248bfb0583c619075fedbe0271f2acb5dea8b431fc6fd117f.png" />
+<img alt="../_images/0ea16dfae43b46614b16aff15bb14db1a61dab351ebda9326c69b1619dd68219.png" src="../_images/0ea16dfae43b46614b16aff15bb14db1a61dab351ebda9326c69b1619dd68219.png" />
+<img alt="../_images/529396a4d61bd688351ad573f3bc9f6382cec52021820a5a5dcdfeff56d06dac.png" src="../_images/529396a4d61bd688351ad573f3bc9f6382cec52021820a5a5dcdfeff56d06dac.png" />
+<img alt="../_images/9de19efec33c5a8d002f113e81f5ba2e4cbf22f2b46b20361fea80ec50153880.png" src="../_images/9de19efec33c5a8d002f113e81f5ba2e4cbf22f2b46b20361fea80ec50153880.png" />
+<img alt="../_images/2ed9c21ef4aff80363666f4c5b2a1feb27182676174d650aa18e9efeffb124ee.png" src="../_images/2ed9c21ef4aff80363666f4c5b2a1feb27182676174d650aa18e9efeffb124ee.png" />
+<img alt="../_images/562fd91d5d832125b05a8ac4daa345a33ec91e2579d63406083f4462c8bd8bee.png" src="../_images/562fd91d5d832125b05a8ac4daa345a33ec91e2579d63406083f4462c8bd8bee.png" />
+<img alt="../_images/8d3f422c4cbced7e2534525e9ebf37857f6f4b98bc0138d35dba5b96f29e8bb1.png" src="../_images/8d3f422c4cbced7e2534525e9ebf37857f6f4b98bc0138d35dba5b96f29e8bb1.png" />
+<img alt="../_images/2bc77d1d7e3124a01b1b3c0656a901ce0ac6207b3ed47d1f34219cabca863b8a.png" src="../_images/2bc77d1d7e3124a01b1b3c0656a901ce0ac6207b3ed47d1f34219cabca863b8a.png" />
+<img alt="../_images/04551ef2f430270de91d99f90444ebc36edbc364ec50fbb27e14d8b4e32d3ee1.png" src="../_images/04551ef2f430270de91d99f90444ebc36edbc364ec50fbb27e14d8b4e32d3ee1.png" />
+<img alt="../_images/894c3267b887615028600cfc0c6e04d26212f2bc9d460515dc68c3286e97b790.png" src="../_images/894c3267b887615028600cfc0c6e04d26212f2bc9d460515dc68c3286e97b790.png" />
+<img alt="../_images/70b5ab6b63a23995786c8590ecf6a68d835e981fdb689fdebf1f70027a7cd250.png" src="../_images/70b5ab6b63a23995786c8590ecf6a68d835e981fdb689fdebf1f70027a7cd250.png" />
+<img alt="../_images/10a3724621eb4949d2e389d002de946bbde368a2338b177aebcccd3581cc068a.png" src="../_images/10a3724621eb4949d2e389d002de946bbde368a2338b177aebcccd3581cc068a.png" />
+<img alt="../_images/7f5828562c19043378761b22d0ed6ddde28a3dc12d513544c21b64ceff3c5388.png" src="../_images/7f5828562c19043378761b22d0ed6ddde28a3dc12d513544c21b64ceff3c5388.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_102</span> <span class="o">=</span> <span class="n">plot_profiles</span><span class="p">(</span><span class="n">indices_102</span><span class="p">,</span> <span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;CE04OSPS-SF01B-4F-PCO2WA102-streamed-pco2w_a_sami_data_record&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a07178308fbc35146133faf7bdcee51ef14e20af26b5d7e3a2143efc0d7c7cf8.png" src="../_images/a07178308fbc35146133faf7bdcee51ef14e20af26b5d7e3a2143efc0d7c7cf8.png" />
+<img alt="../_images/e8f923a02f6fae01ea20ffcc6bab13609c360eac2e624ac641f9502476b04116.png" src="../_images/e8f923a02f6fae01ea20ffcc6bab13609c360eac2e624ac641f9502476b04116.png" />
+<img alt="../_images/328cee3b003ed76fd66a770644c2adda3b3d0c3a473e6205ca85df8d34040905.png" src="../_images/328cee3b003ed76fd66a770644c2adda3b3d0c3a473e6205ca85df8d34040905.png" />
+<img alt="../_images/ddf410f0b51f3b3ff0938a5baeb58ad3784af9dab3cb4da478bb91661258170b.png" src="../_images/ddf410f0b51f3b3ff0938a5baeb58ad3784af9dab3cb4da478bb91661258170b.png" />
+<img alt="../_images/e337f9b43e6bb7dcf9df268ad6cc3ec21416ee1677916389ec2a3f0c9322c851.png" src="../_images/e337f9b43e6bb7dcf9df268ad6cc3ec21416ee1677916389ec2a3f0c9322c851.png" />
+<img alt="../_images/54d1a939801ee5cfb510c02ac7600653217e125b1d615d4a8ddd2031aa7dd5ce.png" src="../_images/54d1a939801ee5cfb510c02ac7600653217e125b1d615d4a8ddd2031aa7dd5ce.png" />
+<img alt="../_images/5f4df8efca4d6696253462093dec0fd0423ef6cc9bae33b4ab5f5d2312cae016.png" src="../_images/5f4df8efca4d6696253462093dec0fd0423ef6cc9bae33b4ab5f5d2312cae016.png" />
+<img alt="../_images/ffb79a3a7be9713aacce67369ab8d49302b35804147b31c7e2597d29792d6c26.png" src="../_images/ffb79a3a7be9713aacce67369ab8d49302b35804147b31c7e2597d29792d6c26.png" />
+<img alt="../_images/206ef488627251571c02190bfa27f9d0464129a1495eb1e847a524ab3fde6f75.png" src="../_images/206ef488627251571c02190bfa27f9d0464129a1495eb1e847a524ab3fde6f75.png" />
+<img alt="../_images/3f5cf9d8261ddfd36f83240f13ff56062f21d8092c1fda5d0f3f3ae364ab949c.png" src="../_images/3f5cf9d8261ddfd36f83240f13ff56062f21d8092c1fda5d0f3f3ae364ab949c.png" />
+<img alt="../_images/eaed3539a8f7b38d85a95ca392ddf2e8c99ed7df01f1c6e7e7e775b30090abca.png" src="../_images/eaed3539a8f7b38d85a95ca392ddf2e8c99ed7df01f1c6e7e7e775b30090abca.png" />
+<img alt="../_images/43f4b8084c15a35d7b516d582fcc1bf2c85c1d30817b08956cb8c587e629eabd.png" src="../_images/43f4b8084c15a35d7b516d582fcc1bf2c85c1d30817b08956cb8c587e629eabd.png" />
+<img alt="../_images/27ab3670cc09785cb7bc66012a244a58ac96636062bafb4e4d6dae362a0fa1f7.png" src="../_images/27ab3670cc09785cb7bc66012a244a58ac96636062bafb4e4d6dae362a0fa1f7.png" />
+<img alt="../_images/dbab5b868f999d2cade20b63f8e80a33209c6d150a0045e37c4265bc8690905d.png" src="../_images/dbab5b868f999d2cade20b63f8e80a33209c6d150a0045e37c4265bc8690905d.png" />
+<img alt="../_images/21770d7b1a8aa48b0ff7421e5aa2be95a3b48c52ff1920db46fa1a01f13c0888.png" src="../_images/21770d7b1a8aa48b0ff7421e5aa2be95a3b48c52ff1920db46fa1a01f13c0888.png" />
+<img alt="../_images/887627c4936d02d66ea64748e4e284dec2b7d22f7f92fb980bd8535ac85d39c0.png" src="../_images/887627c4936d02d66ea64748e4e284dec2b7d22f7f92fb980bd8535ac85d39c0.png" />
+<img alt="../_images/8c71899899c01934a45a26a5ad9cb9aa0ad5703206846beff640ac08987bb9c4.png" src="../_images/8c71899899c01934a45a26a5ad9cb9aa0ad5703206846beff640ac08987bb9c4.png" />
+<img alt="../_images/cf59db0d153d993103b11aa387a35e9e402627162921139e2dc2d3603e664492.png" src="../_images/cf59db0d153d993103b11aa387a35e9e402627162921139e2dc2d3603e664492.png" />
+<img alt="../_images/4157f7ee446bfc2bfc0e0c74897166fc0c101078b7d3919a8d6c20642dd81ace.png" src="../_images/4157f7ee446bfc2bfc0e0c74897166fc0c101078b7d3919a8d6c20642dd81ace.png" />
+<img alt="../_images/fbd5670b5f81f9d0fb5d76ad25eebc58ed78e127d401af54794162f900ff2d23.png" src="../_images/fbd5670b5f81f9d0fb5d76ad25eebc58ed78e127d401af54794162f900ff2d23.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">summarize_cal_changes</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+    <span class="n">mean_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">max_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">array</span> <span class="ow">in</span> <span class="n">diff</span><span class="p">:</span>
+        <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">array</span><span class="p">))</span>
+        <span class="n">max_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">array</span><span class="p">))</span>
+        <span class="n">mean_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
+        <span class="n">max_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">max_diff</span><span class="p">)</span>
+
+    <span class="n">mean_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mean_list</span><span class="p">)</span>
+    <span class="n">greatest_diff_est</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">max_list</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mean abs diff </span><span class="si">{</span><span class="n">mean_diff</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mean of greatest abs diff per profile </span><span class="si">{</span><span class="n">greatest_diff_est</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">combined</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;data points </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Make a histogram</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">combined</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;percent change&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summarize_cal_changes</span><span class="p">(</span><span class="n">diff_101</span><span class="p">,</span> <span class="s2">&quot;Percent change in RS01SBPS-SF01A-4F-PCO2WA101 values before/after cal correction&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean abs diff 0.93
+mean of greatest abs diff per profile 1.66
+data points 1514
+</pre></div>
+</div>
+<img alt="../_images/3e77d170a93386712a485764a987787931cc71852311304a041fb0d073540de8.png" src="../_images/3e77d170a93386712a485764a987787931cc71852311304a041fb0d073540de8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summarize_cal_changes</span><span class="p">(</span><span class="n">diff_301</span><span class="p">,</span> <span class="s2">&quot;Percent change in RS03AXPS-SF03A-4F-PCO2WA301 values before/after cal correction&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean abs diff 0.79
+mean of greatest abs diff per profile 1.42
+data points 1303
+</pre></div>
+</div>
+<img alt="../_images/7290361ff08d7f80f5d00bb5613158f3fcf340477b3bab8cf23556c1a05be182.png" src="../_images/7290361ff08d7f80f5d00bb5613158f3fcf340477b3bab8cf23556c1a05be182.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summarize_cal_changes</span><span class="p">(</span><span class="n">diff_102</span><span class="p">,</span> <span class="s2">&quot;Percent change in CE04OSPS-SF01B-4F-PCO2WA102 values before/after cal correction&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean abs diff 1.56
+mean of greatest abs diff per profile 2.49
+data points 2593
+</pre></div>
+</div>
+<img alt="../_images/cc8833b764edc8fcee3319aa6f48a59a9ef8d65fe5a27f032153a7b1d85ab211.png" src="../_images/cc8833b764edc8fcee3319aa6f48a59a9ef8d65fe5a27f032153a7b1d85ab211.png" />
+</div>
+</div>
+</section>
+<section id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h1>
+<p>The largest impact is seen at the Oregon offshore site CE04OSPS and at relatively lower temperatures.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Reference Designator</p></th>
+<th class="head"><p>Mean Abs Diff (%)</p></th>
+<th class="head"><p>Mean of Greatest Abs Diff per Profile (%)</p></th>
+<th class="head"><p>Data Points Sampled</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CE04OSPS-SF01B-4F-PCO2WA102</p></td>
+<td><p>1.56</p></td>
+<td><p>2.49</p></td>
+<td><p>2593</p></td>
+</tr>
+<tr class="row-odd"><td><p>RS03AXPS-SF03A-4F-PCO2WA301</p></td>
+<td><p>0.79</p></td>
+<td><p>1.42</p></td>
+<td><p>1303</p></td>
+</tr>
+<tr class="row-even"><td><p>RS01SBPS-SF01A-4F-PCO2WA101</p></td>
+<td><p>0.93</p></td>
+<td><p>1.66</p></td>
+<td><p>1514</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./PCO2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../CAMDS/camds.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CAM DS test</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2025 PCO2 calibration correction analysis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-difference-in-representative-science-pod-profiles">Calibration difference in representative science pod profiles</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By RCA data team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
