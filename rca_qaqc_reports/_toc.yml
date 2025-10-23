@@ -9,7 +9,11 @@ parts:
     - file: markdown
     - file: notebooks
     - file: markdown-notebooks
-  - caption: PCO₂ Reports
+  - caption: Digital Still Camera
     chapters:
-    - file: 01_PCO2_cal_before_after
+    - file: CAMDS/camds
+      title: CAMDS test
+  - caption: PCO₂
+    chapters:
+    - file: PCO2/01_PCO2_cal_before_after
       title: PCO₂ Calibration Correction Report
