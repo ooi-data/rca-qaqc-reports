@@ -6,13 +6,14 @@ root: intro
 parts:
   - caption: Jupyter Book Docs
     chapters:
-    - file: markdown
     - file: notebooks
     - file: markdown-notebooks
   - caption: Digital Still Camera
     chapters:
     - file: CAMDS/camds
       title: CAMDS test
+    - file: CAMDS/camds_notebook
+      title: CAMDS notebook
   - caption: PCO₂
     chapters:
     - file: PCO2/01_PCO2_cal_before_after
