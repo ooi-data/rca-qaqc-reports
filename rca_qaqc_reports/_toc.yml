@@ -18,3 +18,7 @@ parts:
     chapters:
     - file: PCO2/01_PCO2_cal_before_after
       title: PCO₂ Calibration Correction Report
+  - caption: Raw Data Workflow
+    chapters:
+    - file: raw_data_workflow/01_parse_raw_data
+      title: Raw Data Parsing Workflow
