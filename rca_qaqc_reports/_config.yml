@@ -6,7 +6,7 @@
 #######################################################################################
 # Book settings
 title                       : RCA QAQC Reports  # The title of the book. Will be placed in the left navbar.
-author                      : RCA data team (funded by National Science Foundation)  # The author of the book
+author                      : RCA Data Team (funded by the National Science Foundation)  # The author of the book
 copyright                   : "2025"  # Copyright year to be placed in the footer
 logo                        : ocean-logo-fullcolor.png  # A path to the book logo
 
