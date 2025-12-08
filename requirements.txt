@@ -8,3 +8,5 @@ s3fs
 pandas 
 matplotlib
 loguru
+xlrd>=2.0.1
+netcdf4
