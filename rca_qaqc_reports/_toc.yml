@@ -8,6 +8,10 @@ parts:
     chapters:
     - file: PCO2/01_PCO2_cal_before_after
       title: PCO₂ Calibration Correction Report
+  - caption: Dissolved O₂
+    chapters:
+    - file: DOFST/01_DOFSTA302_2025_verification.ipynb
+      title: Axial Profiler Dissolved Oxygen Verification
   - caption: Raw Data Workflow
     chapters:
     - file: raw_data_workflow/01_parse_raw_data
