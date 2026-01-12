@@ -12,7 +12,12 @@ parts:
     chapters:
     - file: DOFST/01_DOFSTA302_2025_verification.ipynb
       title: Axial Profiler Dissolved Oxygen Verification
+  - caption: Broadband Hydrophone
+    chapters:
+    - file: HYDBB/01_diverted_data_review
+      title: Diverted Data Review
   - caption: Raw Data Workflow
     chapters:
     - file: raw_data_workflow/01_parse_raw_data
       title: Raw Data Parsing Workflow
+  
